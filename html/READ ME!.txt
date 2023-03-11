@@ -1,32 +1,32 @@
 Bonjour,
-dans ce fichier vous trouverer un tuto pour installer la base de donnée utiliser par le site web sur laragon:
+dans ce fichier vous trouverez un tuto pour installer la base de donnée utiliser par le site web sur laragon:
 
 Le tuto :
 
-1-verifier que le dossier html est bien dans le dossier www de laragon
-2-sur la page d'acceuil de laragon cliquer sur lancer 
-3- quand le lancement est fini et que "mysql" est démarré cliquer sur base de donnée
-4-cliquer sur ouvrir
-5-allez sur l'onglet de droite
-6-faite un clique droit et cliquer sur "créer un(e) nouveau(el/elle)" ->base de donnée
-7-Appeler la table de donnée "palier" et cliquer sur ok
-8-sur l'onglet de droite cliquer sur palier
-9- cliquer sur l'outil "charger un ficheir sql" ou fait ctrl+O
-10-selectionner les trois fichier stocker sur le dossier "palier sql" et cliquer sur ouvrir
-11- normalement trois fichier se sont ouvert avec avec comme logo une fleche bleu 
-12-pour chacun de ces fichiers cliquer dessus et cliquer sur "executer SQL" ou appuyer sur F9
-13-une fois fini cliquer sur l'onglet "base de donnée : palier"
-14-cliquer sur rafraichir et fait F5
-15-si vous avez bien realiser se tuto vous devrier voir 3 table de donnée
+1-Vérifier que le dossier html est bien dans le dossier www de laragon
+2-Sur la page d’accueil de laragon cliquez sur lancer 
+3-Quand le lancement est fini et que "mysql" est démarré cliquez sur base de donnée
+4-Cliquez sur ouvrir
+5-Allez sur l'onglet de gauche
+6-Faites un clique droit et cliquer sur "créer un(e) nouveau(el/elle)" ->base de donnée
+7-Appelez la table de donnée "palier" et cliquer sur ok
+8-Sur l'onglet de gauche cliquer sur "palier"
+9-Cliquez sur l'outil "charger un fichier sql" ou fait ctrl+O
+10-Sélectionnez les trois fichier stocker sur le dossier "palier sql" et cliquez sur ouvrir
+11-Normalement trois fichier se sont ouvert avec comme logo une flèche bleu 
+12-Pour chacun de ces fichiers cliquez dessus et cliquez sur "exécuter SQL" ou appuyer sur F9
+13-Une fois fini cliquez sur l'onglet "base de donnée : palier"
+14-Cliquez sur rafraîchir ou faites F5
+15-Si vous avez bien réalisez se tuto vous devriez voir 3 table de donnée
 
-Et voila le tuto est fini , amusez-vous bien
+Et voilà le tuto est fini , amusez-vous bien
 
 
 
-Une fois que vous avez fini avec le site internet fait ceci:
-1-sur la page d'acceuil de laragon cliquer sur lancer 
-2- quand le lancement est fini et que "mysql" est démarré cliquer sur base de donnée
-3-cliquer sur ouvrir
-4-dans l'onglet de droite fait un clique droit sur la base de donnée "palier"
-5-cliquer sur "retirer(drop)" et cliquer sur OK
+Une fois que vous avez fini avec le site internet faites ceci:
+1-Sur la page d’accueil de laragon cliquez sur lancer 
+2-Quand le lancement est fini et que "mysql" est démarré cliquez sur base de donnée
+3-Cliquez sur ouvrir
+4-Dans l'onglet de gauche faites un clique droit sur la base de donnée "palier"
+5-Cliquez sur "retirer(drop)" et cliquer sur OK
 

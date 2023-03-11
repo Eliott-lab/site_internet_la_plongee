@@ -77,7 +77,7 @@ h3{
         </div>
     </nav>
 
-    <h1>voici vos palier :</h1>
+    <h1>Voici vos palier :</h1>
 
 
     <?php
@@ -215,7 +215,7 @@ if (isset($plongée_succesive)){
     $temps_plongée_2=transformer_temps($temps_plongée_2,$longueur_liste_duree,$liste_duree);
     $palier2=trouver_palier($profondeur_plongée_2,$temps_plongée_2,$conn);
 
-    echo "<h2>Voici les paliers a faire pour la deuxième plongée avec un temps entre les deux plongée de $temps_entre_plongée minute:</h2><br>";
+    echo "<h2>Voici les paliers a faire pour la deuxième plongée avec un temps entre les deux plongée de $temps_entre_plongée minutes:</h2><br>";
     text_palier($palier2,$profondeur_plongée_2,$temps_plongée_2);
 }
 ?>

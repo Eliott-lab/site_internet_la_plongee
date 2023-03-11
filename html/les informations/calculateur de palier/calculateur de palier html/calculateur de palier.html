@@ -56,30 +56,30 @@
         </div>
     </nav>
 
-    <h1>calculateur de table de plongée</h1>
+    <h1>Calculateur de table de plongée</h1>
     <!--texte préventif-->
-    <p> voici un formulaire a remplir pour calculer vos palier a partir <a href="ressource/MN90.pdf" target="_blank">des tables de palier de décompression Mn90</a> .Ce formulaire doit être remplie le plus précisément possible.<br>Ce formulaire n'est pas absolue et peut comporter des erreurs il  n'existe uniquement qu'a titre informatif.</p>
+    <p>Voici un formulaire à remplir pour calculer vos palier a partir <a href="ressource/MN90.pdf" target="_blank">des tables de palier de décompression Mn90</a> .Ce formulaire doit être remplie le plus précisément possible.<br>Ce formulaire n'est pas absolue et peut comporter des erreurs il n'existe uniquement à titre informatif.</p>
 
 <!--formulaire a remplir-->
     <form action="../calculateur de palier php/calculateur de palier.php" method="post">
         
-        <label >profondeur max réaliser lors de la plongée (en M) :</label>
+        <label>Profondeur max réaliser lors de la plongée (en M) :</label>
         <input type="number"  name="profondeur_plongée_1" min="1" max="60" required><br><br>
 
-        <label >durée de la plongée (en min (rappel 1H=60min)) :</label>
+        <label>Durée de la plongée (en min (rappel 1H=60min)) :</label>
         <input type="number"  name="temps_plongée_1" min="1" max="60 " required><br><br>
 
-        <label> plongée successive ?</label>
+        <label>Plongée successive ?</label>
         <input id="maCheckbox" name="plongée_successive" type="checkbox"><br><br>
 
         <div id="monElement" class="afficher_non">
-        <label >temps entre les deux plongée(en min (rappel 1H=60min)) :</label>
+        <label >Temps entre les deux plongée(en min (rappel 1H=60min)) :</label>
         <input type="number"  name="temps_entre_plongée" min="15" max="720"><br><br>
 
-        <label>profondeur max réaliser lors de la deuxième plongée (en M) :</label>
+        <label>Profondeur max réaliser lors de la deuxième plongée (en M) :</label>
         <input type="number"  name="profondeur_plongée_2" min="1" max="60" ><br><br>
 
-        <label  >durée de la deuxième plongée (en min (rappel 1H=60min)) :</label>
+        <label>Durée de la deuxième plongée (en min (rappel 1H=60min)) :</label>
         <input type="number"  name="temps_plongée_2" min="1" max="60 " ><br><br>
     </div>
 
