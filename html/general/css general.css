@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-/* reiinitialise la couleur des lien meme visiter pour ameliorere la visibilité placer en haut pour eviter que cette regle s'aplique sur les boutons deroulant*/
+/* réinitialise la couleur des lien même visiter pour améliorer la visibilité placer en haut pour éviter que cette règle s’applique sur les boutons déroulant*/
 a:visited{
   color: blue;
 }
