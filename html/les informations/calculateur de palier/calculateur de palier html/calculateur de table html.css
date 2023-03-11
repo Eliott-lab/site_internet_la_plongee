@@ -1,0 +1,22 @@
+h1{
+    font-size: 50px;
+    text-align: center;
+    padding: 30px;
+}
+
+p{
+    font-size: 25px;
+    text-align: center;
+}
+
+form{
+    padding: 70px;
+    font-size: 20px;
+}
+
+
+
+.afficher_non{
+    display: none;
+}
+

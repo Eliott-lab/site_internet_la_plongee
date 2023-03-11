@@ -1,0 +1,168 @@
+/* Réinitialiser les marges et les padding pour tous les éléments */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* reiinitialise la couleur des lien meme visiter pour ameliorere la visibilité placer en haut pour eviter que cette regle s'aplique sur les boutons deroulant*/
+a:visited{
+  color: blue;
+}
+
+body {
+/* Modifie la couleur de la barre de défilement pour Firefox */
+scrollbar-color: rgb(17, 53, 131) rgb(0, 18, 56);
+
+/* cache les débordements en X et Y */
+overflow-x: hidden;
+overflow-y: visible;
+
+/* définit la couleur d'arrière-plan du corps */
+background-color: rgb(66, 106, 194);
+}
+
+/* Personnaliser la barre de défilement */
+::-webkit-scrollbar { 
+width: 20px;
+}
+
+::-webkit-scrollbar-track { 
+/* Couleur de fond de la barre de défilement */
+background-image: linear-gradient(to top,#081967 0%,#1ba1a1 100%);
+}
+
+.vers_le_haut::-webkit-scrollbar-thumb {
+/* Couleur de bouton de la barre de défilement quand elle monte*/
+background-image: url("image/scrollbar/plongeur_dessin_vers_le_haut.png");
+background-repeat: no-repeat;
+width: 21px;
+height: 66px;
+
+}
+
+
+.vers_le_bas::-webkit-scrollbar-thumb {
+  /* Couleur de bouton de la barre de défilement quand elle descend*/
+  background-image: url("image/scrollbar/plongeur_dessin_vers_le_bas.png");
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 66px;
+  }
+/* Style du bouton "Afficher" */
+.bouton-afficher {
+background-color:  rgb(6, 42, 121);
+border:none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+
+/* Style pour le menu déroulant */
+.dropdown {
+display: inline-block;
+}
+
+.contenu_a_afficher {
+display: none;
+position: absolute;
+background-color: rgb(14, 53, 138);
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.contenu_a_afficher a {
+color: rgb(255, 255, 255);
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.contenu_a_afficher a:hover {
+background-color:  rgb(3, 25, 75)
+}
+
+.dropdown:hover .contenu_a_afficher {
+display: block;
+}
+
+.dropdown:hover .bouton_afficher {
+background-color:  rgb(0, 47, 150);
+}
+
+/* Style pour la barre de navigation */
+nav {
+position:sticky;
+top:  0%;
+background-color:rgb(4, 65, 196) ;
+border:none;
+width: 150%;
+vertical-align: top;
+margin: -4px;
+}
+
+/* Animation du bateau */
+
+.fond_bleu{
+  background-color: #045d80;
+  top:0%;
+  height: 200px;
+  width: 100%;
+}
+.bateau {
+  position: absolute;
+  top: 0%;
+  padding: 10px;
+  width: auto;
+  max-height: max-content;
+  animation: bateau;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+  margin: auto;
+}
+
+@keyframes bateau {
+  from {
+    left: -57%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* Bandeau d'animation */
+.bandeau-animation {
+  position: relative;
+  width: max-content;
+}
+
+/* Définition de l'image */
+.image-affichable {
+  border: 3px solid black;
+  margin: 50px;
+  
+}
+
+.definiton-de-image {
+  position: absolute;
+  display: none;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.image-affichable:hover .definiton-de-image {
+  display:block;
+
+}
+
+.text-definition-image {
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+

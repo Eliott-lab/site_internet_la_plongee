@@ -1,0 +1,28 @@
+h1,h2,h3,p{
+    text-align: center;
+    margin:20px
+}
+h1 {
+    font-size: 40px;
+    padding: 30px;
+}
+h2 {
+    font-size: 35px;
+}
+h3{
+    font-size: 30px;
+}
+p {
+    font-size: 20px;
+}
+
+
+img.petite{
+    display: block;
+    width: 200px;
+}
+
+
+
+
+

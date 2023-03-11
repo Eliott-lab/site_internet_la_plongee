@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;     
+    margin: 30px;
+}
+
+.conteneur {
+    
+    margin: 50px 0;
+    display: flex;
+    text-align: center;    
+  }
+
+img {
+    max-height: 200px;
+    display: block; 
+    margin-bottom: 0;
+}
+
+.text {
+    font-size: 20pxx;
+    margin-top: 10px;
+    width: 70%;
+}
+
+div.zone-de-text {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: space-around
+  }
+  
+    

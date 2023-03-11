@@ -1,0 +1,59 @@
+/* Style pour le titre h1 */
+h1 {
+    /* Ajout d'un padding en haut pour séparer du contenu précédent */
+    padding-top: 60px;
+    /* Ajout d'un padding en bas pour séparer du contenu suivant */
+    padding-bottom: 30px;
+    /* Alignement du texte au centre */
+    text-align: center;
+    /* Hauteur du titre */
+    height: 50px;
+}
+
+.conteneur {
+    /* Ajout d'une marge en haut et en bas pour séparer chaque paire de div */
+    margin: 50px 0;
+    /* Utilisation de flexbox pour aligner les éléments horizontalement */
+    display: flex;
+    text-align: center;    
+  }
+
+/* Style pour les images */
+img {
+    /* Taille max  des images*/
+    max-height: 300px;
+    /* Ce paramètre permet de définir que l'élément "img" sera affiché comme un bloc */
+    display: block; 
+    /* Eviter que l'image ne dépasse le bord inférieur */
+    margin-bottom: 0;
+}
+
+/* Style pour le sous-titre h2 */
+h2 {
+    /* Ajout d'un padding à gauche pour créer un espacement */
+    padding-left: 2%;
+    /* Taille de police */
+    font-size: 30px;
+    /* Alignement du texte au centre */
+    text-align: center;
+}
+
+/* Style pour le texte */
+.text {
+    /* Indentation du texte */
+    text-indent: 50px;
+    /* Marge en haut */
+    margin-top: 10px;
+    /* Largeur du texte */
+    width: 70%;
+}
+
+div.zone-de-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:left;
+  }
+  
+
+
