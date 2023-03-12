@@ -81,6 +81,10 @@ h3{
 
 
     <?php
+
+    //pour comprendre se passage en php il est conseiller de lire le document pdf sur la compréhension des tables MN90 car ce programme est la applique la méthode présenter dans ce document
+
+
     //connection au server
 $servername = "localhost";
 $username = "root";
@@ -209,7 +213,8 @@ text_palier($palier,$profondeur_plongée_1,$temps_plongée_1);
 
 
 // si la checkbox est cochée calcul les palier des la deuxième plongée et affiche le texte 
-if (isset($plongée_succesive)){
+if (isset($plongée_successive)){
+    if ($profondeur_plongée_2!= null AND $temps_plongée_2!=null AND $temps_entre_plongée!=null ){// vérifie si les information qui devront être traité sont bien fournis
     $profondeur_plongée_2=transformer_profondeur($profondeur_plongée_2,$longueur_liste_profondeur,$liste_profondeur);
     $temps_plongée_2=transformer_temps($temps_plongée_2,$longueur_liste_duree,$liste_duree)+majoration($profondeur_plongée_1,$temps_plongée_1,$temps_entre_plongée,$profondeur_plongée_2,$conn);
     $temps_plongée_2=transformer_temps($temps_plongée_2,$longueur_liste_duree,$liste_duree);
@@ -217,6 +222,9 @@ if (isset($plongée_succesive)){
 
     echo "<h2>Voici les paliers a faire pour la deuxième plongée avec un temps entre les deux plongée de $temps_entre_plongée minutes:</h2><br>";
     text_palier($palier2,$profondeur_plongée_2,$temps_plongée_2);
+    }else {
+        echo "<br><br><p>Nous n'avons pas pu calculer le palier pour la deuxième plongée car il manquait des informations. Recommence <a href='../../../les informations/calculateur de palier/calculateur de palier html/calculateur de palier.html'>ici</a>";
+    }
 }
 ?>
 
