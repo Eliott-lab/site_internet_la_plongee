@@ -1,5 +1,8 @@
 Bonjour,
-dans ce fichier vous trouverez un tuto pour installer la base de donnée utiliser par le site web sur laragon:
+dans ce fichier vous trouverez un tuto pour installer la base de donnée utiliser par le site web sur laragon ainsi qu'une explication de la raison de ce site:
+il n'est pas nécessaire d'avoir laragon mais le tuto ci-dessous vous permetteras d'utiliser le site avec son pleins potentiel
+
+vous pouvez utiliser le site internet sans laragon ou tout autre serveur mais la partie en PHP ne marcheras pas
 
 Le tuto :
 
@@ -12,7 +15,7 @@ Le tuto :
 7-Appelez la table de donnée "palier" et cliquer sur ok
 8-Sur l'onglet de gauche cliquer sur "palier"
 9-Cliquez sur l'outil "charger un fichier sql" ou fait ctrl+O
-10-Sélectionnez les trois fichier stocker sur le dossier "palier sql" et cliquez sur ouvrir
+10-Sélectionnez les trois fichier stocker dans le dossier "palier sql" et cliquez sur ouvrir
 11-Normalement trois fichier se sont ouvert avec comme logo une flèche bleu 
 12-Pour chacun de ces fichiers cliquez dessus et cliquez sur "exécuter SQL" ou appuyer sur F9
 13-Une fois fini cliquez sur l'onglet "base de donnée : palier"
@@ -23,10 +26,12 @@ Et voilà le tuto est fini , amusez-vous bien
 
 
 
-Une fois que vous avez fini avec le site internet faites ceci:
+Une fois que vous avez fini avec le site internet et que vous voulez supprimez la base de donnée faites ceci:
 1-Sur la page d’accueil de laragon cliquez sur lancer 
 2-Quand le lancement est fini et que "mysql" est démarré cliquez sur base de donnée
 3-Cliquez sur ouvrir
 4-Dans l'onglet de gauche faites un clique droit sur la base de donnée "palier"
 5-Cliquez sur "retirer(drop)" et cliquer sur OK
 
+Pourquoi un site internet sur la plongée ?
+    - ce site est un projet scolaire , je ne suis pas professionel et j'ai essayé de tout faire moi même et toutes idées présente sont les miennes
