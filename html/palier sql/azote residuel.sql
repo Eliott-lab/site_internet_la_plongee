@@ -10,9 +10,9 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Export de la structure de la table palier. azote residuel
-CREATE TABLE IF NOT EXISTS `azote residuel` (
-  `azote residuel` float DEFAULT NULL,
+-- Export de la structure de la table palier. azote_residuel
+CREATE TABLE IF NOT EXISTS `azote_residuel` (
+  `quantite_azote_residuel` float DEFAULT NULL,
   `12` int(11) DEFAULT NULL,
   `15` int(11) DEFAULT NULL,
   `18` int(11) DEFAULT NULL,
@@ -35,10 +35,10 @@ CREATE TABLE IF NOT EXISTS `azote residuel` (
   `60` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Export de données de la table palier.azote residuel : 18 rows
-DELETE FROM `azote residuel`;
-/*!40000 ALTER TABLE `azote residuel` DISABLE KEYS */;
-INSERT INTO `azote residuel` (`azote residuel`, `12`, `15`, `18`, `20`, `22`, `25`, `28`, `30`, `32`, `35`, `38`, `40`, `42`, `45`, `48`, `50`, `52`, `55`, `58`, `60`) VALUES
+-- Export de données de la table palier.azote_residuel : 18 rows
+DELETE FROM `azote_residuel`;
+/*!40000 ALTER TABLE `azote_residuel` DISABLE KEYS */;
+INSERT INTO `azote_residuel` (`quantite_azote_residuel`, `12`, `15`, `18`, `20`, `22`, `25`, `28`, `30`, `32`, `35`, `38`, `40`, `42`, `45`, `48`, `50`, `52`, `55`, `58`, `60`) VALUES
 	(0.82, 4, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 	(0.84, 7, 6, 5, 4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1),
 	(0.86, 11, 9, 7, 7, 6, 5, 5, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2),
@@ -57,7 +57,7 @@ INSERT INTO `azote residuel` (`azote residuel`, `12`, `15`, `18`, `20`, `22`, `2
 	(1.38, 160, 114, 89, 78, 69, 59, 52, 48, 44, 40, 37, 35, 33, 30, 28, 27, 26, 24, 23, 22),
 	(1.42, 180, 126, 97, 85, 75, 64, 56, 52, 48, 43, 39, 37, 35, 33, 30, 29, 28, 26, 25, 24),
 	(1.45, 196, 135, 104, 90, 80, 68, 59, 55, 51, 46, 42, 39, 37, 34, 32, 31, 29, 28, 26, 25);
-/*!40000 ALTER TABLE `azote residuel` ENABLE KEYS */;
+/*!40000 ALTER TABLE `azote_residuel` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

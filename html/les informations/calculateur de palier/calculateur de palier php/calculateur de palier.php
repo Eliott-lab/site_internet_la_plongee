@@ -81,152 +81,140 @@ h3{
 
 
     <?php
+    // Connexion à la base de données
+    $servername = "localhost";
+    $username = "root";
+    $dbname = "palier";
 
-    //pour comprendre se passage en php il est conseiller de lire le document pdf sur la compréhension des tables MN90 car ce programme est la applique la méthode présenter dans ce document
-
-
-    //connection au server
-$servername = "localhost";
-$username = "root";
-
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=palier", $username);
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-  echo "Connexion impossible vérifier d'avoir bien configurer votre laragon d’après le fichier README!: ";
-  die;
-}
-$liste_duree=array(5,10,15,20,25,30,35,40,45,50,55,60);
-$longueur_liste_duree=count($liste_duree);
-$liste_profondeur=array(6,8,10,12,15,18,20,22,25,28,30,32,35,38,40,42,45,48,50,52,55,58,60);
-$longueur_liste_profondeur=count($liste_profondeur);
-$conn = new PDO("mysql:host=$servername;dbname=palier", $username);
-
-//fonction pour arrondir les valeurs qui sont donnée par l'utilisateur
-function transformer_profondeur($a,$longueur_liste_profondeur,$liste_profondeur){
-    //verification que l'utilisateur n'as pas donnée une valeur supérieur a celle maximal de la table de donnée
-    if ($a>60){
-        die("Je suis désolé mais la profondeur de $a M donné dépasse ce que le programme est capable de calculer. Vérifier vos donnée,faite le calcul manuellement(la table utilisée est accessible dans les informations) ou chercher d'autre table pour calculer votre profondeur.");
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo "<p>Erreur de connexion : " . htmlspecialchars($e->getMessage()) . "</p>";
+        die;
     }
-    //parcours la liste de donnée pour trouver la première qui est supérieur à celle donnée par l'utilisateur
-    for ($y=0;$y<$longueur_liste_profondeur;$y++){
-        if ($a<=$liste_profondeur[$y]){
-            $a=$liste_profondeur[$y];
-            return $a;
+
+    // Listes de référence pour arrondir les valeurs de profondeur et de temps
+    $liste_duree = array(5,10,15,20,25,30,35,40,45,50,55,60);
+    $liste_profondeur = array(6,8,10,12,15,18,20,22,25,28,30,32,35,38,40,42,45,48,50,52,55,58,60);
+    $liste_temps = array(15,30,45,60,90,120,150,210,240,270,300,330,360,390,420,450,480,510,540,570,600,630,690,720);
+
+    // Fonctions d'arrondi
+    function transformer_profondeur($a, $liste_profondeur) {
+        if ($a > 60) {
+            die("Je suis désolé mais la profondeur de $a M dépasse les capacités de calcul. Vérifiez vos données.");
+        }
+        foreach ($liste_profondeur as $profondeur) {
+            if ($a <= $profondeur) {
+                return $profondeur;
+            }
         }
     }
-}
-//fonction pour arrondir les valeurs qui sont donnée par l'utilisateur
-function transformer_temps($b,$longueur_liste_duree,$liste_duree){
-    //verification que l'utilisateur n'as pas donnée une valeur supérieur a celle maximal de la table de donnée
-    if ($b>60){
-        die("Je suis désolée mais le temps de $b minutes  dépasse ce que le programme est capable de calculer. Vérifier vos donnée,fait le calcul manuellement(la table utilisée est accessible dans les informations) ou chercher d'autre table pour calculer votre temps.");
-    }
-    //parcours la liste de donnée pour trouver la première qui est supérieur à celle donnée par l'utilisateur
-    for ($y=0;$y<$longueur_liste_duree;$y++){
-        if ($b<=$liste_duree[$y]){
-            $b=$liste_duree[$y];
-            return $b;
+
+    function transformer_temps($b, $liste_duree) {
+        if ($b > 60) {
+            die("Je suis désolée mais le temps de $b minutes dépasse les capacités de calcul. Vérifiez vos données.");
+        }
+        foreach ($liste_duree as $duree) {
+            if ($b <= $duree) {
+                return $duree;
+            }
         }
     }
-}
-//permet de trouver le palier en le cherchant dans la table palier
-function trouver_palier($a,$b,$conn){
-    //connexion a la table et récupération des valeurs
-    $trouver_palier = "SELECT 15M, 12M, 9M, 6M, 3M FROM palier WHERE profondeur = $a AND temps = $b";
-    $palier_resultat = $conn->query($trouver_palier);
-    //permet de transformer le résultat en une liste constitué uniquement de la valeur des palier
-    $palier = $palier_resultat->fetchAll(PDO::FETCH_NUM);
-    $palier_valeurs = array();
-    foreach ($palier as $ligne) {
-        foreach ($ligne as $valeur) {
-            $palier_valeurs[] = $valeur;
+
+    function transformer_temps_entre($t, $liste_temps) {
+        if ($t > 720) {
+            die("Je suis désolée mais le temps de $t minutes dépasse les capacités de calcul. Vérifiez vos données.");
+        }
+        foreach ($liste_temps as $temps) {
+            if ($t <= $temps) {
+                return $temps;
+            }
         }
     }
-    //vérifie que le résultat de la recherche ne donne pas uniquement  des 999 valeurs qui permet de dire que la table mn90 ne donne pas de palier
-        if (in_array(999,$palier_valeurs)){
-                die ("Je suis désolée mais il n'y a aucune donnée existante pour une plongée de $b minutes à $a mètre");
-    }
-        return $palier_valeurs;
-}
-//permet de donner le GPS
-function GPS($a,$b,$conn){
-    //récupère le gps
-    $trouver_GPS="SELECT GPS FROM palier WHERE profondeur=$a and temps=$b";
-    $GPS=$conn->query($trouver_GPS);
-    //converti le résultat en string
-    $GPS = $GPS->fetchAll(PDO::FETCH_NUM);
-    $GPS_valeurs="";
-    foreach ($GPS as $ligne) {
-        foreach ($ligne as $valeur) {
-            $GPS_valeurs = $valeur;
+
+    // Fonctions de calcul des paliers et GPS
+    function trouver_palier($a, $b, $conn) {
+        $trouver_palier = $conn->prepare("SELECT 15M, 12M, 9M, 6M, 3M FROM palier WHERE profondeur = :profondeur AND temps = :temps");
+        $trouver_palier->execute(['profondeur' => $a, 'temps' => $b]);
+        $palier = $trouver_palier->fetch(PDO::FETCH_NUM);
+
+        if (in_array(999, $palier)) {
+            die("Je suis désolée mais il n'y a aucune donnée pour une plongée de $b minutes à $a mètres.");
         }
+
+        return $palier;
     }
-    return $GPS_valeurs;
-}
-//permet de calculer la majoration en temps qu'il faut ajouter a la deuxième fonction
-function majoration($a,$b,$t,$d,$conn) {
-    $GPS=GPS($a,$b,$conn);
-    $trouver_azote_residuel="SELECT $t FROM evolution azote residuel WHERE GPS=$GPS";
-    $azote_residuel=$conn->query($trouver_azote_residuel);
-    $trouver_majoration="SELECT $d FROM azote residuel WHERE azote residuel=$azote_residuel ";
-    $majoration=$conn->query($trouver_majoration);
-    return $majoration;
-}
-//permet de rédiger un texte lisible
-function text_palier ($x,$a,$b){
-    echo "<h3>Voici les paliers pour une profondeur de $a mètres et $b minutes :</h3><br/>";
-    $longueur_palier=count($x);
-    $compteur=0;
-    for($y=0;$y<$longueur_palier;$y++){
-        if ($x[$y]!=0){
-        $compteur+=1;
-        $z=15-3*$y;
-        if ($compteur==1){
-            echo "<p class='text'>Tu devras faire un palier de $x[$y] minutes à $z M ";
+
+    function GPS($a, $b, $conn) {
+        $trouver_GPS = $conn->prepare("SELECT GPS FROM palier WHERE profondeur = :profondeur AND temps = :temps");
+        $trouver_GPS->execute(['profondeur' => $a, 'temps' => $b]);
+        return $trouver_GPS->fetchColumn();
+    }
+
+    function majoration($a, $b, $t, $d, $conn, $liste_temps) {
+        $GPS = GPS($a, $b, $conn);
+        $t = transformer_temps_entre($t, $liste_temps);
+        $trouver_azote_residuel = $conn->prepare("SELECT $t FROM evolution_azote_residuel WHERE GPS = :GPS");
+        $trouver_azote_residuel->execute(['GPS' => $GPS]);
+        $azote_residuel = $trouver_azote_residuel->fetchColumn();
+
+        $trouver_majoration = $conn->prepare("SELECT $d FROM azote_residuel WHERE quantite_azote_residuel = :azote");
+        $trouver_majoration->execute(['azote' => $azote_residuel]);
+        return (int)$trouver_majoration->fetchColumn();
+    }
+
+    // Fonction d'affichage des paliers
+    function text_palier($x, $a, $b) {
+        echo "<h3>Voici les paliers pour une profondeur de $a mètres et $b minutes :</h3><br/>";
+        $compteur = 0;
+        foreach ($x as $y => $valeur) {
+            if ($valeur != 0) {
+                $compteur++;
+                $z = 15 - 3 * $y;
+                if ($compteur == 1) {
+                    echo "<p class='text'>Tu devras faire un palier de $valeur minutes à $z M ";
+                } else {
+                    echo "et un palier de $valeur minutes à $z M ";
+                }
+            }
         }
-        else {
-            echo "et un palier de $x[$y] minutes à $z M ";
-        }}}
         echo ".</p>";
-    if ($compteur==0){
-        echo "<p class='texte'> Tu n'as pas de palier a faire mais je te conseil de faire un palier de sécurité de 3 minute à 3 mètres.</p>";
-    }
-}
-
-
-//appelle les fonction a partir du from en html
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    foreach ($_POST as $nom_variable => $valeur) {
-         ${$nom_variable} = $valeur;
+        if ($compteur == 0) {
+            echo "<p class='texte'>Tu n'as pas de palier à faire mais je te conseille de faire un palier de sécurité de 3 minutes à 3 mètres.</p>";
         }
     }
 
-//appelle de fonction pour la plongée_1
-$profondeur_plongée_1=transformer_profondeur($profondeur_plongée_1,$longueur_liste_profondeur,$liste_profondeur);
-$temps_plongée_1=transformer_temps($temps_plongée_1,$longueur_liste_duree,$liste_duree);
-$palier=trouver_palier($profondeur_plongée_1,$temps_plongée_1,$conn);
+    // Traitement des données soumises
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        foreach ($_POST as $nom_variable => $valeur) {
+            ${$nom_variable} = htmlspecialchars($valeur);
+        }
 
-echo "<h2>Voici les paliers a faire pour la première plongée :</h2><br>";
-text_palier($palier,$profondeur_plongée_1,$temps_plongée_1);
-// rédige le texte
+        // Calcul pour la première plongée
+        $profondeur_plongée_1 = transformer_profondeur($profondeur_plongée_1, $liste_profondeur);
+        $temps_plongée_1 = transformer_temps($temps_plongée_1, $liste_duree);
+        $palier = trouver_palier($profondeur_plongée_1, $temps_plongée_1, $conn);
 
+        echo "<h2>Voici les paliers à faire pour la première plongée :</h2><br>";
+        text_palier($palier, $profondeur_plongée_1, $temps_plongée_1);
 
-// si la checkbox est cochée calcul les palier des la deuxième plongée et affiche le texte 
-if (isset($plongée_successive)){
-    if ($profondeur_plongée_2!= null AND $temps_plongée_2!=null AND $temps_entre_plongée!=null ){// vérifie si les information qui devront être traité sont bien fournis
-    $profondeur_plongée_2=transformer_profondeur($profondeur_plongée_2,$longueur_liste_profondeur,$liste_profondeur);
-    $temps_plongée_2=transformer_temps($temps_plongée_2,$longueur_liste_duree,$liste_duree)+majoration($profondeur_plongée_1,$temps_plongée_1,$temps_entre_plongée,$profondeur_plongée_2,$conn);
-    $temps_plongée_2=transformer_temps($temps_plongée_2,$longueur_liste_duree,$liste_duree);
-    $palier2=trouver_palier($profondeur_plongée_2,$temps_plongée_2,$conn);
+        // Calcul pour la deuxième plongée (si applicable)
+        if (isset($plongée_successive) && $profondeur_plongée_2 && $temps_plongée_2 && $temps_entre_plongée) {
+            $profondeur_plongée_2 = transformer_profondeur($profondeur_plongée_2, $liste_profondeur);
+            $temps_plongée_2 = transformer_temps($temps_plongée_2, $liste_duree) + 
+                majoration($profondeur_plongée_1, $temps_plongée_1, $temps_entre_plongée, $profondeur_plongée_2, $conn, $liste_temps);
+            $temps_plongée_2 = transformer_temps($temps_plongée_2, $liste_duree);
+            $palier2 = trouver_palier($profondeur_plongée_2, $temps_plongée_2, $conn);
 
-    echo "<h2>Voici les paliers a faire pour la deuxième plongée avec un temps entre les deux plongée de $temps_entre_plongée minutes:</h2><br>";
-    text_palier($palier2,$profondeur_plongée_2,$temps_plongée_2);
-    }else {
-        echo "<br><br><p>Nous n'avons pas pu calculer le palier pour la deuxième plongée car il manquait des informations. Recommence <a href='../../../les informations/calculateur de palier/calculateur de palier html/calculateur de palier.html'>ici</a>";
+            echo "<h2>Voici les paliers à faire pour la deuxième plongée :</h2><br>";
+            text_palier($palier2, $profondeur_plongée_2, $temps_plongée_2);
+        } else {
+            echo "<p>Impossible de calculer les paliers pour la deuxième plongée. Veuillez vérifier les informations fournies.</p>";
+        }
     }
-}
-?>
+    ?>
+
 
 </body>
 </html>
