@@ -202,8 +202,7 @@ h3{
         // Calcul pour la deuxième plongée (si applicable)
         if (isset($plongée_successive) && $profondeur_plongée_2 && $temps_plongée_2 && $temps_entre_plongée) {
             $profondeur_plongée_2 = transformer_profondeur($profondeur_plongée_2, $liste_profondeur);
-            $temps_plongée_2 = transformer_temps($temps_plongée_2, $liste_duree) + 
-                majoration($profondeur_plongée_1, $temps_plongée_1, $temps_entre_plongée, $profondeur_plongée_2, $conn, $liste_temps);
+            $temps_plongée_2 = transformer_temps($temps_plongée_2, $liste_duree) + majoration($profondeur_plongée_1, $temps_plongée_1, $temps_entre_plongée, $profondeur_plongée_2, $conn, $liste_temps);
             $temps_plongée_2 = transformer_temps($temps_plongée_2, $liste_duree);
             $palier2 = trouver_palier($profondeur_plongée_2, $temps_plongée_2, $conn);
 

@@ -1,6 +1,6 @@
 Bonjour,
-dans ce fichier vous trouverez un tuto pour installer la base de donnée utiliser par le site web sur laragon ainsi qu'une explication de la raison de ce site:
-il n'est pas nécessaire d'avoir laragon mais le tuto ci-dessous vous permetteras d'utiliser le site avec son pleins potentiel
+dans ce fichier vous trouverez un tuto pour installer la base de donnée utilisé par le site web sur laragon ainsi qu'une explication de la raison de ce site:
+il n'est pas nécessaire d'avoir laragon mais le tuto ci-dessous vous permetteras d'utiliser le site avec son plein potentiel
 
 vous pouvez utiliser le site internet sans laragon ou tout autre serveur mais la partie en PHP ne marcheras pas
 
@@ -34,4 +34,4 @@ Une fois que vous avez fini avec le site internet et que vous voulez supprimez l
 5-Cliquez sur "retirer(drop)" et cliquer sur OK
 
 Pourquoi un site internet sur la plongée ?
-    - ce site est un projet scolaire , je ne suis pas professionnel et j'ai essayé de tout faire moi même et toutes idées présente sont les miennes
+    - ce site est un projet scolaire , je ne suis pas professionnel et j'ai essayé de tout faire moi même et toutes les idées présente sont les miennes

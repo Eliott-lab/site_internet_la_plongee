@@ -22,9 +22,3 @@ function detecterDirectionScrollbar() {
     positionPrecedente = positionActuelle;
   }
 }
-
-
-
-
-
-
